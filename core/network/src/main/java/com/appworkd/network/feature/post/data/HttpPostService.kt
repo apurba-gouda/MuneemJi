@@ -20,7 +20,9 @@ constructor(
     @OptIn(ExperimentalSerializationApi::class)
     override suspend fun fetchPost(): List<Post> {
         return try {
-            val json = httpClient.get<String>("https://jsonplaceholder.typicode.com/posts")
+            val json =  httpClient.get<String> {
+                url { path("posts") }
+            }
             Json.decodeFromString(json)
         } catch (e: Exception) {
             e.message

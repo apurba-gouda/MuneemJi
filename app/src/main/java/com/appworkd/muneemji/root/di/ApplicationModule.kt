@@ -23,6 +23,7 @@ class ApplicationModule(private val app: MuneemJiApp) {
     @Provides
     fun provideApplication() : MuneemJiApp = app
 
+    @Singleton
     @Provides
      fun providePostRepo(postRepositoryImpl: PostRepositoryImpl): PostRepository = postRepositoryImpl
 }

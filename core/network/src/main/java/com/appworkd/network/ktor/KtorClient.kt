@@ -1,6 +1,7 @@
 package com.appworkd.network.ktor
 
 import android.content.Context
+import com.appworkd.network.urlprovider.UrlProvider
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import io.ktor.client.*
 import io.ktor.client.engine.okhttp.*
@@ -14,9 +15,11 @@ class KtorClient
 @Inject
 constructor(
 private val context: Context,
+private val urlProvider: UrlProvider,
 ) {
     val client : HttpClient =
         HttpClient(OkHttp) {
+            initDefaultConfigs(urlProvider)
 
             install(JsonFeature) {
                 serializer = KotlinxSerializer()
@@ -37,11 +40,6 @@ private val context: Context,
                 level = LogLevel.BODY //or ALL
                 level = LogLevel.ALL
             }
-
-            /*engine {
-                connectTimeout = 5000
-                socketTimeout = 5000
-            }*/
 
         }
 
