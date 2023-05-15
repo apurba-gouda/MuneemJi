@@ -16,4 +16,5 @@ ext {
     appCompatVersion = "1.6.1"
     ktxVersion = "1.7.0"
     jvmTargetVersion = '1.8'
+    coroutinesVersion = "1.6.1"
 }
