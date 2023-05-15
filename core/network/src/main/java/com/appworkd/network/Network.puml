@@ -1,0 +1,14 @@
+@startmindmap
+title NETWORK
+* network
+** di
+*** NetworkModule
+** feature
+*** PostDataSource
+*** ResendOTP
+** ktor
+*** ClientMnjNetwork
+*** KtorClient
+** model
+*** MnjNetworkDataSource
+@endmindmap

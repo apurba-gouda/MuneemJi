@@ -15,3 +15,10 @@ dependencyResolutionManagement {
 rootProject.name = "MuneemJi"
 include ':app'
 include ':mylibrary'
+include ':core'
+include ':core:mylibrary'
+include ':di'
+include ':core:common'
+include ':core:network'
+include ':core:lib'
+include ':core:data'
