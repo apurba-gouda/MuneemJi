@@ -16,3 +16,4 @@ rootProject.name = "MuneemJi"
 include ':app'
 include ':core'
 include ':core:network'
+include ':di'
