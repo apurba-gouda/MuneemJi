@@ -1,4 +1,4 @@
-package com.appworkd.data
+package com.appwork.common
 
 import org.junit.Test
 

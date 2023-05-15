@@ -1,6 +1,6 @@
 package com.appworkd.network.urlprovider
 
-import com.appworkd.network.BuildConfig
+import com.appworkd.core.network.BuildConfig
 import javax.inject.Inject
 
 class UrlProviderImpl

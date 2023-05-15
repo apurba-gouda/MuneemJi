@@ -1,4 +1,4 @@
-package com.appworkd.data
+package com.app.di
 
 import org.junit.Test
 
