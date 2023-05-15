@@ -1,21 +1,19 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
 }
 
 android {
-    namespace 'com.appworkd.muneemji'
+    namespace 'com.app.di'
     compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.appworkd.muneemji"
         minSdk rootProject.ext.minSdkVersion
         targetSdk rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -24,11 +22,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-    buildFeatures {
-        viewBinding = true
-    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -39,29 +32,14 @@ android {
 }
 
 dependencies {
-    def lifecycle_version = "2.4.0"
-    def materialVersion = "1.8.0"
 
-    //Modules
-    implementation project(':di')
+    implementation project(':core:network')
 
     implementation "androidx.core:core-ktx:${rootProject.ext.ktxVersion}"
     implementation "androidx.appcompat:appcompat:${rootProject.ext.appCompatVersion}"
-    implementation "com.google.android.material:material:$materialVersion"
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-
-    //Provides scope for coroutines
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
-
-    //Framework for creating objects
     implementation "com.google.dagger:dagger:${rootProject.ext.daggerVersion}"
     kapt "com.google.dagger:dagger-compiler:${rootProject.ext.daggerVersion}"
 
-    //coroutines
-    "org.jetbrains.kotlinx:kotlinx-coroutines-android:${rootProject.ext.coroutinesVersion}"
-    //Splash API Android
-    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
