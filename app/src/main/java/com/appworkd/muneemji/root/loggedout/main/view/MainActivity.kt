@@ -3,22 +3,43 @@ package com.appworkd.muneemji.root.loggedout.main.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.lifecycleScope
+import com.appworkd.data.repo.post.PostRepository
 import com.appworkd.muneemji.databinding.ActivityMainBinding
 import com.appworkd.muneemji.root.MuneemJiApp
-import com.appworkd.muneemji.root.loggedout.main.navigation.MainNavigator
-import com.appworkd.muneemji.root.loggedout.main.navigation.MainNavigatorImpl
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
-    private val appComponent by lazy { MuneemJiApp().appComponent }
-    private val navigator: MainNavigator by lazy { MainNavigatorImpl(this) }
-
     private val viewBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    @Inject
+    lateinit var postRepository: PostRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        appComponent.injectActivity(this)
+
+        val myApp = application as MuneemJiApp
+        myApp.appComponent.injectActivity(this)
+
         super.onCreate(savedInstanceState)
         installSplashScreen()
         setContentView(viewBinding.root)
+
+        lifecycleScope.launch {
+            try {
+                launch { postRepository.getPosts() }
+                getPosts()
+            } catch (e: Exception) {
+                println("Posts: inside exception : ${e.message} ")
+            }
+        }
+    }
+
+    private suspend fun getPosts() {
+        postRepository.posts
+            .collect {
+                println("Posts: inside collect ")
+                it.forEach { println("Posts: inside collect it with value: $it ") }
+            }
     }
 }
 
