@@ -5,10 +5,11 @@ import com.appworkd.network.urlprovider.UrlProvider
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import io.ktor.client.*
 import io.ktor.client.engine.okhttp.*
-import io.ktor.client.features.*
-import io.ktor.client.features.json.*
-import io.ktor.client.features.json.serializer.*
-import io.ktor.client.features.logging.*
+import io.ktor.client.plugins.HttpTimeout
+import io.ktor.client.plugins.logging.DEFAULT
+import io.ktor.client.plugins.logging.LogLevel
+import io.ktor.client.plugins.logging.Logger
+import io.ktor.client.plugins.logging.Logging
 import javax.inject.Inject
 
 class KtorClient
@@ -20,10 +21,6 @@ private val urlProvider: UrlProvider,
     val client : HttpClient =
         HttpClient(OkHttp) {
             initDefaultConfigs(urlProvider)
-
-            install(JsonFeature) {
-                serializer = KotlinxSerializer()
-            }
 
             engine {
                 addInterceptor(ChuckerInterceptor.Builder(context).build())
@@ -44,7 +41,7 @@ private val urlProvider: UrlProvider,
         }
 
     companion object {
-        const val TIME_OUT = 5000L
+        const val TIME_OUT = 20000L
     }
 
 }
