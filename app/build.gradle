@@ -67,6 +67,7 @@ dependencies {
 
     //coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${rootProject.ext.coroutinesVersion}"
+
     //Splash API Android
     implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
     testImplementation 'junit:junit:4.13.2'
