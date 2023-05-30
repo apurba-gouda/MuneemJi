@@ -4,7 +4,7 @@ import com.appworkd.network.feature.post.PostService
 import com.appworkd.network.feature.post.model.Post
 import com.appworkd.network.ktor.httpCall
 import com.appworkd.network.model.exceptions.ApiException
-import com.appworkd.network.serde.JsonProvider
+import com.appworkd.network.serde.JsonProvider.json
 import com.appworkd.network.serde.httpDeserialize
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
@@ -22,7 +22,7 @@ constructor(
         httpClient.get {
             url { path("posts") }
         }.httpDeserialize(
-            JsonProvider().invoke(emptyList()),
+            json,
             ListSerializer(Post.serializer()),
             ApiException.serializer(),
         )

@@ -8,7 +8,7 @@ class MnjNetworkDataSourceImpl
 @Inject
 constructor(
     private val postService: PostService,
-    ) : MnjNetworkDataSource {
+) : MnjNetworkDataSource {
 
     override suspend fun getPosts(): List<Post> = postService.fetchPost()
 
