@@ -11,5 +11,3 @@ data class ApiException(
     @SerialName("error_message")
     val errorMessage: String,
 ) : Exception(errorMessage)
-
-

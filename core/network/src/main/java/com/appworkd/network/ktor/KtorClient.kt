@@ -15,10 +15,10 @@ import javax.inject.Inject
 class KtorClient
 @Inject
 constructor(
-private val context: Context,
-private val urlProvider: UrlProvider,
+    private val context: Context,
+    private val urlProvider: UrlProvider,
 ) {
-    val client : HttpClient =
+    val client: HttpClient =
         HttpClient(OkHttp) {
             initDefaultConfigs(urlProvider)
 
@@ -26,13 +26,13 @@ private val urlProvider: UrlProvider,
                 addInterceptor(ChuckerInterceptor.Builder(context).build())
             }
 
-            install(HttpTimeout){
+            install(HttpTimeout) {
                 requestTimeoutMillis = TIME_OUT
                 connectTimeoutMillis = TIME_OUT
                 socketTimeoutMillis = TIME_OUT
             }
 
-            install(Logging){
+            install(Logging) {
                 logger = Logger.DEFAULT
                 level = LogLevel.BODY //or ALL
                 level = LogLevel.ALL
@@ -41,7 +41,6 @@ private val urlProvider: UrlProvider,
         }
 
     companion object {
-        const val TIME_OUT = 20000L
+        const val TIME_OUT = 5000L
     }
-
 }
