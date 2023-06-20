@@ -11,7 +11,6 @@ import com.appworkd.network.urlprovider.UrlProviderImpl
 import dagger.Module
 import dagger.Provides
 import io.ktor.client.*
-import javax.inject.Singleton
 
 @Module
 class NetworkModule(
@@ -21,9 +20,9 @@ class NetworkModule(
     @Provides
     fun provideBaseUrl(): UrlProvider = UrlProviderImpl()
 
-    @Singleton
     @Provides
-    fun provideClient(urlProvider: UrlProvider): HttpClient = KtorClient(context, urlProvider).client
+    fun provideClient(urlProvider: UrlProvider): HttpClient =
+        KtorClient(context, urlProvider).client
 
     @Provides
     fun providePostService(postService: HttpPostService): PostService = postService

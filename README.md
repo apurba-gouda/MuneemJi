@@ -1,7 +1,12 @@
 # MuneemJi
-When writing a README for a Git repository, including basic configuration information for an Android app, such as Android Gradle Plugin and Gradle version, can be helpful for users. Here's a template you can use as a starting point for your README:
+
+When writing a README for a Git repository, including basic configuration information for an Android
+app, such as Android Gradle Plugin and Gradle version,
+can be helpful for Devs.
 
 # Project Name
+
+MuneemJi
 
 Brief description of the project.
 
@@ -17,32 +22,35 @@ Follow these steps to set up the project:
 
 1. **Clone** the repository:
    ```
-   git clone https://github.com/username/repository.git
+   git clone https://github.com/apurba-gouda/MuneemJi.git
    ```
 
 2. **Open** the project in Android Studio.
 
 3. **Configure** the Android Gradle Plugin and Gradle version:
-   - Open the **project-level build.gradle** file.
-   - Ensure the `build.gradle` file contains the following configurations:
+    - Open the **project-level build.gradle** file.
+    - Ensure the `build.gradle` file contains the following configurations:
 
    ```groovy
-   buildscript {
-       repositories {
-           google()
-           jcenter()
-       }
-       dependencies {
-           classpath 'com.android.tools.build:gradle:X.X.X' // Android Gradle Plugin version
-       }
+    plugins {
+    id 'com.android.application' version '7.3.0' apply false
+    id 'com.android.library' version '7.3.0' apply false
+    id 'org.jetbrains.kotlin.android' version '1.8.0' apply false
+    id 'org.jetbrains.kotlin.jvm' version '1.8.0' apply false
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.21'
    }
+
    ```
 
    - Open the **app-level build.gradle** file.
    - Ensure the `build.gradle` file contains the following configurations:
 
    ```groovy
-   apply plugin: 'com.android.application'
+   plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+   }
 
    android {
        compileSdkVersion X // Specify your desired compile SDK version
@@ -64,7 +72,10 @@ Follow these steps to set up the project:
 
 ## Additional Information
 
-Provide any additional information or instructions that might be relevant to the project, such as API keys, third-party library dependencies, or specific configuration steps.
+Follow this branching strategy before starting the integration:
+```
+https://www.notion.so/Tools-and-Systems-1ff6b1b17c4741a0ad7cdc736aa98870?pvs=4#e31acf8e981a4ebf850b46468e2509c3
+```
 
 ## License
 
@@ -72,21 +83,22 @@ Include the license information for your project, if applicable.
 
 ```
 MIT License
-Copyright (c) [year] [author]
+Copyright (c) [2023] [Apurba, Ajay, Rakesh, Vivek ]
 ```
-
-Replace `[year]` with the current year and `[author]` with your name or the appropriate entity.
 
 ## Contributing
 
-Explain how users can contribute to the project, including guidelines for bug reports, feature requests, and pull requests.
+Explain how users can contribute to the project, including guidelines for bug reports, feature
+requests, and pull requests.
 
 ## Support
 
-Provide information on how users can seek support for the project, such as links to issue trackers, forums, or contact information.
+Provide information on how users can seek support for the project, such as links to issue trackers,
+forums, or contact information.
 
 ## Acknowledgments
 
 If there are any acknowledgments or credits you'd like to include, list them here.
 
-That's a basic template to get you started. Feel free to modify it based on your specific project needs, adding sections or information that would be helpful for users.
+That's a basic template to get you started. Feel free to modify it based on your specific project
+needs, adding sections or information that would be helpful for users.
